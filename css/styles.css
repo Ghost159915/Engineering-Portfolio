@@ -12,19 +12,23 @@
     min-height: 100vh;
   }
   
-  /* Navigation */
-  nav {
+/* Navigation */
+nav {
     width: 100%;
     padding: 1rem 2rem;
     display: flex;
     justify-content: flex-end;
-    background: transparent;
+    background-color: #5498ff;
   }
   nav a {
     margin-left: 1.5rem;
     text-decoration: none;
-    color: #333;
+    color: #fff;
     font-weight: 500;
+    transition: color 0.2s;
+  }
+  nav a:hover {
+    color: #e0e0e0; /* a light hover state */
   }
   
   /* Hero Section */
