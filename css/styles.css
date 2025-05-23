@@ -1,205 +1,119 @@
 /* — Reset & Base — */
-* {
-  margin: 0; padding: 0; box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.5;
-  color: #333;
-  font-weight: 300;
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.5; color:#333; font-weight:300;
 }
 
-h1, h2, h3, h4 {
-  font-weight: 500;
-}
+/* — Headings — */
+h1,h2,h3,h4 { font-weight:500; }
+
+/* — Nav & Content Animations — */
+@keyframes navEnter{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes contentEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* — Top Nav — */
-.site-header {
-  position: sticky;
-  top: 20px;            /* gap from the very top */
-  width: 100%;
-  display: flex;
-  justify-content: center;  /* center the pill */
-  z-index: 1000;
-  pointer-events: none; 
-  margin-bottom: 1.5rem;    /* let only the inner nav catch clicks */
+.site-header{
+  position:sticky; top:20px; margin-bottom:1.5rem;
+  width:100%; display:flex; justify-content:center;
+  z-index:1000; pointer-events:none;
+}
+.site-header .top-nav{
+  pointer-events:all;
+  display:inline-flex;justify-content:center;align-items:center;
+  gap:1.5rem;padding:0.5rem 1.5rem;
+  background:#f5f5f5;border-radius:9999px;
+  animation:navEnter .4s ease-out both;
+}
+.site-header .top-nav a{
+  position:relative;text-decoration:none;color:#000;font-weight:500;
+}
+.site-header .top-nav a.active::after{
+  content:"";position:absolute;bottom:-.25rem;left:0;right:0;
+  height:2px;background:#000;
+}
+/* hover underline for Projects & About */
+.site-header .top-nav a:not(.active):not(.btn-primary)::after{
+  content:"";position:absolute;bottom:-.25rem;left:0;right:0;
+  height:2px;background:transparent;transition:background .2s;
+}
+.site-header .top-nav a:not(.active):not(.btn-primary):hover::after{
+  background:#000;
 }
 
-/* pill container */
-.site-header .top-nav {
-  pointer-events: all;       /* re-enable inside */
-  background: #f5f5f5;
-  border-radius: 9999px;
-  padding: 0.5rem 1.5rem;
-  display: inline-flex;      /* shrink-wrap */
-  justify-content: center;   /* ← center Projects/About/Contact */
-  align-items: center;
-  gap: 1.5rem;
+/* — Buttons — */
+.top-nav a.btn-primary{
+  display:inline-block;padding:.5rem 1rem;
+  background:#000;color:#fff;border-radius:9999px;
+  transition:background .2s;
 }
+.top-nav a.btn-primary:hover{background:#333}
+.btn-secondary{
+  display:inline-block;padding:.5rem 1rem;
+  border:1px solid #333;color:#333;border-radius:9999px;
+  text-decoration:none;transition:background .2s,color .2s;
+}
+.btn-secondary:hover{background:#333;color:#fff}
 
-/* link styles */
-.site-header .top-nav a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;        /* for underline pseudo */
-}
-
-/* active underline */
-.site-header .top-nav a.active::after {
-  content: "";
-  position: absolute;
-  bottom: -0.25rem;
-  left: 0; right: 0;
-  height: 2px;
-  background: #000;
-}
-
-/* “Contact” dark button */
-.top-nav a.btn-primary {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #000;
-  color: #fff;
-  border-radius: 9999px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-.top-nav a.btn-primary:hover {
-  background-color: #222;
+/* — Shared content fade/slide in — */
+.hero-container,
+.hero,
+.hero__avatar,
+.content-section,
+.projects-grid,
+.project-card,
+.resume-section{
+  opacity:0;animation:contentEnter .5s ease-out both .3s;
 }
 
 /* — Hero Section — */
-.hero-container {
-  display: flex;
-  justify-content: center;
-  padding: 0 1rem;
+.hero-container{display:flex;justify-content:center;padding:0 1rem}
+.hero{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:2rem;
+  max-width:1000px;margin:0 auto;
 }
-.hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-
-  /* widen all pages' heroes */
-  max-width: 1000px;
-  margin: 0 auto;
+.hero__avatar{
+  width:250px;height:250px;border-radius:50%;
+  object-fit:cover;border:2px solid #eee;margin-bottom:1.5rem;
 }
-.hero__avatar {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #eee;
-  margin: 0 auto 1.5rem;
-}
-.hero__title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-.hero__subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-.hero__actions {
-  display: inline-flex;
-  gap: 1rem;
-}
-.btn-secondary {
-  text-decoration: none;
-  border: 1px solid #333;
-  color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.95rem;
-}
-
-.btn-secondary:hover {
-  background: #333;
-  color: #fff;
-}
+.hero__title{font-size:2.5rem;margin-bottom:.5rem;line-height:1.2}
+.hero__subtitle{font-size:1rem;color:#555;margin-bottom:1.5rem}
+.hero__actions{display:inline-flex;gap:1rem}
 
 /* — Content Sections — */
-.content-section {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+.content-section{
+  max-width:700px;margin:2rem auto;padding:0 1rem;
 }
-.content-section h2 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+.content-section h2{
+  font-size:1.75rem;margin-bottom:1rem;font-weight:600;
 }
-.content-section p {
-  color: #444;
-  line-height: 1.6;
-}
+.content-section p{line-height:1.6;color:#444}
 
 /* — Projects Grid — */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem 3rem;
+.projects-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;padding:0 1rem 3rem;
 }
-.project-card {
-  background: #fafafa;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+.project-card{
+  background:#fafafa;border-radius:.5rem;padding:1rem;
+  text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
-.project-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+.project-card img{width:100%;border-radius:4px;margin-bottom:1rem}
+.project-card h3{margin-bottom:.5rem}
+.project-card p{margin-bottom:1rem;color:#555}
+
+/* — Résumé Embed via PDF.js — */
+.resume-section{
+  max-width:800px;margin:2rem auto;padding:0 1rem;
+  text-align:center;display:flex;flex-direction:column;
+  align-items:center;
 }
-.project-card h3 {
-  margin-bottom: 0.5rem;
-}
-.project-card p {
-  color: #555;
-  margin-bottom: 1rem;
+.resume-section h2{font-size:1.75rem;margin-bottom:1rem;font-weight:600}
+#pdf-canvas{
+  width:100%;box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  border-radius:.25rem;margin-bottom:1rem;display:block;
 }
 
-/* ─── Résumé Embed via PDF.js ─── */
-.resume-section {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.resume-section h2 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-/* the PDF.js canvas */
-#pdf-canvas {
-  width: 100%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-.resume-section .btn-secondary {
-  margin-top: 0.5rem;
-}
-
-/* — Smaller avatar on Projects page — */
-.projects-page .hero__avatar {
-  width: 120px;
-  height: 120px;
-}
-.projects-page .hero__title {
-  line-height: 1.2;
-}
+/* — Projects Page Overrides — */
+.projects-page .hero__avatar{width:120px;height:120px}
