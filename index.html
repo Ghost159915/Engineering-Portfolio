@@ -2,34 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <!-- Make sure this path matches exactly where your CSS file lives -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home — Benas Vaiciulis</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-  </nav>
-
-  <!-- HERO SECTION START -->
-  <header class="hero">
-    <!-- Put your image file named avatar.jpg right next to index.html -->
-    <img src="images/avatar.jpg" alt="Your Name" class="hero__avatar" />
-
-    <h1 class="hero__title">Benas Vaiciulis</h1>
-    <p class="hero__subtitle">Robotics Engineer — Turning ideas into machines</p>    
-
-    <div class="hero__cta">
-      <button onclick="location.href='about.html'">About</button>
-      <button onclick="location.href='projects.html'">Projects</button>
-    </div>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <nav class="top-nav">
+      <a href="projects.html">Projects</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="btn-primary">Contact</a>
+    </nav>
   </header>
-  <!-- HERO SECTION END -->
 
-  <script src="js/main.js"></script>
+  <!-- Hero Section -->
+  <main class="hero-container">
+    <div class="hero">
+      <img src="assets/avatar.jpg" alt="Benas Vaiciulis" class="hero__avatar" />
+      <h1 class="hero__title">Benas Vaiciulis</h1>
+      <p class="hero__subtitle">
+        I’m a Software Engineer passionate about building scalable web apps and intuitive user experiences.
+      </p>
+      <div class="hero__actions">
+        <a href="https://linkedin.com/in/benasvaiciulis" target="_blank" class="btn-secondary">LinkedIn</a>
+        <a href="resume.pdf" download class="btn-secondary">Résumé</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

@@ -2,39 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About — Benas Vaiciulis</title>
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- PDF.js library from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script>
+    // tell PDF.js where its worker lives
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+  </script>
 </head>
 <body>
-  <!-- Navigation (same as index) -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-  </nav>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <nav class="top-nav">
+      <a href="projects.html">Projects</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="btn-primary">Contact</a>
+    </nav>
+  </header>
 
-  <main class="about">
-    <section class="about__intro">
-      <h1>About Me</h1>
-      <p>I’m Benas Vaiciulis, a software engineer specializing in building interactive web applications and intuitive user experiences.</p>
-    </section>
-
-    <section class="about__skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML5 & CSS3 (Flexbox & Grid)</li>
-        <li>JavaScript (ES6+)</li>
-        <li>React & Next.js</li>
-        <li>Node.js & Express</li>
-        <li>Git & GitHub</li>
-      </ul>
-    </section>
+  <!-- Hero + Bio Text -->
+  <main class="hero-container">
+    <div class="hero">
+      <img src="assets/avatar.jpg" alt="Benas Vaiciulis" class="hero__avatar" />
+      <h1 class="hero__title">Benas Vaiciulis</h1>
+      <p class="hero__subtitle">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Vivamus sit amet semper purus...Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. Vivamus sit amet semper purus...Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. Vivamus sit amet semper purus...Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. Vivamus sit amet semper purus...
+      </p>
+      <div class="hero__actions">
+        <a href="https://linkedin.com/in/benasvaiciulis" target="_blank" class="btn-secondary">LinkedIn</a>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Benas Vaiciulis</p>
-  </footer>
+  <!-- PDF.js Canvas Embed -->
+  <section class="resume-section">
+    <h2>Resume</h2>
+    <canvas id="pdf-canvas"></canvas>
+    <a href="assets/resume.pdf" download class="btn-secondary">
+      Download Resume (PDF)
+    </a>
+  </section>
+
+  <!-- Inline script to render first page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const url = 'assets/resume.pdf';
+      const canvas = document.getElementById('pdf-canvas');
+      const ctx = canvas.getContext('2d');
+      const container = document.querySelector('.resume-section');
+
+      pdfjsLib.getDocument(url).promise.then(pdf => {
+        return pdf.getPage(1);
+      }).then(page => {
+        // first get unscaled viewport to compute scale
+        const unscaled = page.getViewport({ scale: 1 });
+        const scale = (container.clientWidth) / unscaled.width;
+        const viewport = page.getViewport({ scale });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        page.render({
+          canvasContext: ctx,
+          viewport: viewport
+        });
+      }).catch(err => {
+        console.error('PDF.js error:', err);
+        container.innerHTML += '<p>Could not load résumé preview. <a href="' + url + '" download>Download PDF</a></p>';
+      });
+    });
+  </script>
 </body>
 </html>

@@ -2,35 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects — Benas Vaiciulis</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-  </nav>
+  <header class="site-header">
+    <nav class="top-nav">
+      <a href="projects.html" class="active">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="btn-primary">Contact</a>
+    </nav>
+  </header>
 
-  <main class="projects">
-    <h1>My Projects</h1>
-    <div class="projects__grid">
-      <!-- Example project card -->
-      <div class="project-card">
-        <img src="images/project1.png" alt="Project One Screenshot" />
-        <h2>Project One</h2>
-        <p>A brief description of this project and what it does.</p>
-        <a href="https://github.com/your-username/project-one" target="_blank">View Repo</a>
+  <main class="hero-container">
+    <div class="hero">
+      <img src="assets/avatar.jpg" alt="Benas Vaiciulis" class="hero__avatar" />
+      <h1 class="hero__title">Benas Vaiciulis</h1>
+      <p class="hero__subtitle">
+        I’m a Software Engineer passionate about building scalable web apps and intuitive user experiences.
+      </p>
+      <div class="hero__actions">
+        <a href="https://linkedin.com/in/benasvaiciulis" target="_blank" class="btn-secondary">LinkedIn</a>
+        <a href="resume.pdf" download class="btn-secondary">Résumé</a>
       </div>
-      <!-- Repeat project-card blocks for each project -->
     </div>
   </main>
 
-  <footer>
-    <p>© 2025 Benas Vaiciulis</p>
-  </footer>
+  <!-- Your Projects Grid -->
+  <section class="content-section projects-grid">
+    <div class="project-card">
+      <img src="assets/project1.png" alt="Project One">
+      <h3>Project One</h3>
+      <p>Brief description…</p>
+      <a href="#" class="btn-secondary">View Repo</a>
+    </div>
+    <!-- Repeat .project-card -->
+  </section>
 </body>
 </html>
