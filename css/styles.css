@@ -3,8 +3,14 @@
   margin: 0; padding: 0; box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #111; background: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
 }
 
 /* — Top Nav — */
@@ -38,8 +44,8 @@ body {
   background: #000;
 }
 .top-nav a.btn-primary {
-  display: inline-block;       /* allow vertical padding to take effect */
-  padding: 0.5rem 1em;       /* ↑ increase left/right padding as needed */
+  display: inline-block;       
+  padding: 0.5rem 1em;     
   background-color: #000;
   color: #fff;
   border-radius: 9999px;
@@ -59,17 +65,17 @@ body {
   padding: 0rem 1rem;
 }
 .hero {
-  flex: 1;                    /* existing */
-  display: flex;              /* existing */
-  flex-direction: column;     /* existing */
-  align-items: center;        /* existing */
-  justify-content: center;    /* existing */
-  text-align: center;         /* existing */
-  padding: 2rem;              /* you had 2rem [left/right]—we’ll keep it */
+  flex: 1;                    
+  display: flex;              
+  flex-direction: column;     
+  align-items: center;        
+  justify-content: center;    
+  text-align: center;         
+  padding: 2rem;              
   
   /* ← ADD THESE */
-  max-width: 800px;           /* allow the hero to grow to 800px wide */
-  margin: 0 auto;             /* center it within the viewport */
+  max-width: 800px;           
+  margin: 0 auto;             
 }
 .hero__avatar {
   width: 250px;
@@ -168,7 +174,6 @@ body {
 /* Our canvas that PDF.js draws into */
 #pdf-canvas {
   width: 100%;
-  /* height will be set by the script to match PDF aspect ratio */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-radius: 0.25rem;
   margin-bottom: 1rem;

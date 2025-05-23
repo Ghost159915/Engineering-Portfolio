@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About — Benas Vaiciulis</title>
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+rel="stylesheet"
+/>
+
   <link rel="stylesheet" href="css/styles.css" />
 
   <!-- PDF.js library from CDN -->
@@ -62,7 +67,6 @@
       pdfjsLib.getDocument(url).promise.then(pdf => {
         return pdf.getPage(1);
       }).then(page => {
-        // first get unscaled viewport to compute scale
         const unscaled = page.getViewport({ scale: 1 });
         const scale = (container.clientWidth) / unscaled.width;
         const viewport = page.getViewport({ scale });
