@@ -1,160 +1,180 @@
-/* Reset & base */
+/* — Reset & Base — */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: system-ui, sans-serif;
-    line-height: 1.4;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-/* Navigation */
-nav {
-    width: 100%;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: flex-end;
-    background-color: #5498ff;
-  }
-  nav a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  nav a:hover {
-    color: #e0e0e0; /* a light hover state */
-  }
-  
-  /* Hero Section */
-  .hero {
-    flex: 1; /* take up remaining space */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-  }
-  .hero__avatar {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1.5rem;
-    border: 4px solid #eee;
-  }
-  .hero__title {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero__subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-  }
-  .hero__cta button {
-    margin: 0 0.5rem;
-    padding: 0.6rem 1.4rem;
-    font-size: 0.95rem;
-    border: none;
-    border-radius: 9999px;
-    cursor: pointer;
-    background-color: #eef;
-    transition: background-color 0.2s;
-  }
-  .hero__cta button:hover {
-    background-color: #dde;
-  }
-  
-  /* About Page */
-.about {
-    padding: 4rem 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .about__intro h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .about__intro p {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 2rem;
-  }
-  .about__skills h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .about__skills ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.5rem 1rem;
-  }
-  .about__skills li {
-    background: #f5f5f5;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.95rem;
-  }
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111; background: #fff;
+}
 
-  /* Projects Page */
-.projects {
-    padding: 4rem 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .projects h1 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  .projects__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .project-card {
-    background: #fafafa;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .project-card img {
-    max-width: 100%;
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
-  }
-  .project-card h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-  }
-  .project-card p {
-    flex: 1;
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 1rem;
-  }
-  .project-card a {
-    text-decoration: none;
-    font-weight: 500;
-    color: #0066cc;
-    border: 1px solid #0066cc;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.2s, color 0.2s;
-  }
-  .project-card a:hover {
-    background-color: #0066cc;
-    color: #fff;
-  }
+/* — Top Nav — */
+.site-header {
+  padding: 2rem 0;
+  text-align: center;
+}
+.top-nav {
+  display: inline-flex;
+  gap: 2rem;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+.top-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+.top-nav a.active {
+  color: #000;
+}
+.top-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0; right: 0;
+  height: 2px;
+  background: #000;
+}
+.top-nav a.btn-primary {
+  display: inline-block;       /* allow vertical padding to take effect */
+  padding: 0.5rem 1em;       /* ↑ increase left/right padding as needed */
+  background-color: #000;
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.top-nav a.btn-primary:hover {
+  background-color: #222;
+}
+
+/* — Hero Section — */
+.hero-container {
+  display: flex;
+  justify-content: center;
+  padding: 0rem 1rem;
+}
+.hero {
+  flex: 1;                    /* existing */
+  display: flex;              /* existing */
+  flex-direction: column;     /* existing */
+  align-items: center;        /* existing */
+  justify-content: center;    /* existing */
+  text-align: center;         /* existing */
+  padding: 2rem;              /* you had 2rem [left/right]—we’ll keep it */
   
+  /* ← ADD THESE */
+  max-width: 800px;           /* allow the hero to grow to 800px wide */
+  margin: 0 auto;             /* center it within the viewport */
+}
+.hero__avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eee;
+  margin: 0 auto 1.5rem;
+}
+.hero__title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero__subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.hero__actions {
+  display: inline-flex;
+  gap: 1rem;
+}
+.btn-secondary {
+  text-decoration: none;
+  border: 1px solid #333;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+.btn-secondary:hover {
+  background: #333; color: #fff;
+}
+
+/* — Content Sections — */
+.content-section {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.content-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.content-section p {
+  color: #444;
+  line-height: 1.6;
+}
+
+/* — Projects Grid — */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem 3rem;
+}
+.project-card {
+  background: #fafafa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.project-card h3 {
+  margin-bottom: 0.5rem;
+}
+.project-card p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* ─── Résumé Embed via PDF.js ─── */
+.resume-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Our canvas that PDF.js draws into */
+#pdf-canvas {
+  width: 100%;
+  /* height will be set by the script to match PDF aspect ratio */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.resume-section .btn-secondary {
+  margin-top: 0.5rem;
+}
