@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project six</title>
+
+  <!-- ─── Inline critical CSS (nav + hero) ─── -->
+  <style>
+    @keyframes navEnter {
+      from { opacity:0; transform:translateY(-20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes contentEnter {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* Sticky, centered nav */
+    .site-header {
+      position: sticky;
+      top: 20px;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    .site-header .top-nav {
+      pointer-events: all;
+      display: inline-flex;
+      gap: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      background: #f5f5f5;
+      border-radius: 9999px;
+      animation: navEnter 0.4s ease-out both;
+    }
+    .site-header .top-nav a {
+      position: relative;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+    .site-header .top-nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -0.25rem;
+      left: 0; right: 0;
+      height: 2px;
+      background: #000;
+    }
+
+    /* Fade-in for the main content */
+    .content-section,
+    .content-section img,
+    .content-section h1,
+    .content-section p {
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+  </style>
+
+  <!-- ─── Preload & Font Setup ─── -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body class="projects-page">
+
+  <!-- ─── Navigation (identical on every page) ─── -->
+  <header class="site-header">
+    <nav class="top-nav">
+      <a href="projects.html" class="active">Projects</a>
+      <a href="about.html">About</a>
+      <a href="mailto:benasvaiciulis@gmail.com" class="btn-primary">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ─── Page‐Specific Content ─── -->
+  <section class="content-section" style="text-align:center; max-width:800px; margin:0 auto; padding:2rem 1rem;">
+    <h1>Project six</h1>
+    <p>A full-featured e-commerce platform built with React and Node.js.</p>
+
+    <!-- Screenshot (lazy-loaded, responsive) -->
+    <img
+      src="assets/project1.png"
+      alt="Screenshot of Project One"
+      loading="lazy"
+      style="width:100%; max-width:700px; height:auto; margin:2rem auto; display:block;"
+    />
+  </section>
+
+  <!-- ─── Overview Section ─── -->
+  <section class="content-section" style="max-width:700px; margin:0 auto 3rem; padding:0 1rem;">
+    <h2>Overview</h2>
+    <p>
+      Describe Project six here… what problems it solves, key features,
+      your role, technologies used, and any notable challenges or achievements.
+    </p>
+  </section>
+
+</body>
+</html>
