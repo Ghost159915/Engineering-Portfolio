@@ -3,142 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — Benas Vaičiulis</title>
+  <title>About — Benas Vaiciulis</title>
 
-  <!-- Inline critical CSS (nav + hero) -->
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Inline timer styles -->
   <style>
-    @keyframes navEnter {
-      from { opacity:0; transform:translateY(-20px); }
-      to   { opacity:1; transform:translateY(0); }
+    .timer-section {
+      max-width: 480px;
+      margin: 2rem auto;
+      text-align: center;
+      padding: 0 1rem;
     }
-    @keyframes contentEnter {
-      from { opacity:0; transform:translateY(20px); }
-      to   { opacity:1; transform:translateY(0); }
+    .timer-note {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.75rem;
     }
-    .site-header {
-      position: sticky; top:20px; margin-bottom:1.5rem;
-      width:100%; display:flex; justify-content:center;
-      z-index:1000; pointer-events:none;
-    }
-    .site-header .top-nav {
-      pointer-events:all;
-      display:inline-flex; justify-content:center; align-items:center;
-      gap:1.5rem; padding:0.5rem 1.5rem;
-      background:#f5f5f5; border-radius:9999px;
-      animation:navEnter 0.4s ease-out both;
-    }
-    .site-header .top-nav a {
-      position:relative; text-decoration:none;
-      color:#000; font-weight:500;
-    }
-    .hero-container {
-      display:flex; justify-content:center; padding:0 1rem;
-      animation:contentEnter 0.5s ease-out both 0.3s;
-    }
-    .hero {
-      flex:1; display:flex; flex-direction:column; align-items:center;
-      justify-content:center; text-align:center; padding:2rem;
-      max-width:1000px; margin:0 auto;
-      animation:contentEnter 0.5s ease-out both 0.3s;
-    }
-    .hero__avatar {
-      width:250px; height:250px; border-radius:50%;
-      object-fit:cover; border:2px solid #eee;
-      margin-bottom:1.5rem;
-      animation:contentEnter 0.5s ease-out both 0.3s;
+    #countdown {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
     }
   </style>
 
-  <!-- Preconnect & preload stylesheet -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" 
-    rel="stylesheet"
-  />
-  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <!-- PDF.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+  </script>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Top Navigation -->
   <header class="site-header">
     <nav class="top-nav">
       <a href="projects.html">Projects</a>
       <a href="about.html" class="active">About</a>
-      <a href="mailto:benasvaiciulis@gmail.com" class="btn-primary">Contact</a>
+      <a id="contact-btn" href="mailto:benasvaiciulis@gmail.com" class="btn-primary">
+        Contact
+      </a>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero + Bio Text -->
   <main class="hero-container">
     <div class="hero">
-      <img
-        src="assets/avatar.jpg"
-        alt="Benas Vaičiulis"
-        class="hero__avatar"
-        loading="lazy"
-        width="250"
-        height="250"
-      />
-      <h1 class="hero__title">Benas Vaičiulis</h1>
+      <img src="assets/avatar.jpg" alt="Benas Vaiciulis" class="hero__avatar" />
+      <h1 class="hero__title">Benas Vaiciulis</h1>
       <p class="hero__subtitle">
-        Software Engineer blending creative problem-solving with clean, maintainable code.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet semper purus.
       </p>
       <div class="hero__actions">
-        <a
-          href="https://linkedin.com/in/benasvaiciulis"
-          target="_blank"
-          class="btn-secondary"
-        >LinkedIn</a>
+        <a href="https://linkedin.com/in/benasvaiciulis" target="_blank" class="btn-secondary">
+          LinkedIn
+        </a>
       </div>
     </div>
   </main>
 
-  <!-- Résumé Preview -->
+  <!-- TIMER SECTION -->
+  <section class="timer-section">
+    <p class="timer-note">
+      If an offer arrives after this timer ends, it will be automatically rejected.<br>
+      Click “Contact” above to email me &amp; add +1 week to the deadline.
+    </p>
+    <div id="countdown">Loading…</div>
+  </section>
+
+  <!-- Résumé Embed via PDF.js -->
   <section class="resume-section">
-    <h2>Resume</h2>
+    <h2>Résumé</h2>
     <canvas id="pdf-canvas"></canvas>
     <a href="assets/resume.pdf" download class="btn-secondary">
-      Download Resume (PDF)
+      Download Résumé (PDF)
     </a>
   </section>
 
-  <!-- Lazy‐load PDF.js + render -->
+  <!-- PDF.js Rendering Script -->
   <script>
-    (function() {
-      const section = document.querySelector('.resume-section');
-      const onIntersect = ([e], obs) => {
-        if (!e.isIntersecting) return;
-        obs.disconnect();
-        const s = document.createElement('script');
-        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js';
-        s.onload = () => {
-          pdfjsLib.GlobalWorkerOptions.workerSrc =
-            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
-          const url = 'assets/resume.pdf';
-          const canvas = document.getElementById('pdf-canvas');
-          const ctx = canvas.getContext('2d');
-          const width = canvas.parentElement.clientWidth;
-          pdfjsLib.getDocument(url).promise
-            .then(pdf => pdf.getPage(1))
-            .then(page => {
-              const v1 = page.getViewport({ scale: 1 });
-              const scale = width / v1.width;
-              const viewport = page.getViewport({ scale });
-              canvas.width = viewport.width;
-              canvas.height = viewport.height;
-              return page.render({ canvasContext: ctx, viewport }).promise;
-            })
-            .catch(() => {
-              section.innerHTML +=
-                '<p>Unable to preview resume. <a href="' +
-                url +
-                '" download>Download PDF</a></p>';
-            });
-        };
-        document.body.appendChild(s);
-      };
-      new IntersectionObserver(onIntersect, { rootMargin: '200px' }).observe(section);
+    document.addEventListener('DOMContentLoaded', () => {
+      const url = 'assets/resume.pdf';
+      const canvas = document.getElementById('pdf-canvas');
+      const ctx = canvas.getContext('2d');
+      const container = document.querySelector('.resume-section');
+
+      pdfjsLib.getDocument(url).promise
+        .then(pdf => pdf.getPage(1))
+        .then(page => {
+          const unscaled = page.getViewport({ scale: 1 });
+          const scale = container.clientWidth / unscaled.width;
+          const viewport = page.getViewport({ scale });
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          page.render({
+            canvasContext: ctx,
+            viewport: viewport
+          });
+        })
+        .catch(err => {
+          console.error('PDF.js error:', err);
+          container.innerHTML +=
+            '<p>Could not load résumé preview. <a href="' +
+            url +
+            '" download>Download PDF</a></p>';
+        });
+    });
+  </script>
+
+  <!-- COUNTDOWN + CONTACT +=7 DAYS SCRIPT -->
+  <script>
+    (function(){
+      const STORAGE_KEY = 'offer_deadline';
+      const DEFAULT_DAYS = 90;
+      // helper to add days
+      function addDays(date, days) {
+        return new Date(date.getTime() + days*24*60*60*1000);
+      }
+      // load or init deadline
+      let raw = localStorage.getItem(STORAGE_KEY),
+          deadline = raw ? new Date(raw) : addDays(new Date(), DEFAULT_DAYS);
+      if(!raw) localStorage.setItem(STORAGE_KEY, deadline);
+
+      const out = document.getElementById('countdown');
+      function updateTimer(){
+        const now = new Date(),
+              diff = deadline - now;
+        if(diff <= 0){
+          out.textContent = '⏰ Deadline passed!';
+          clearInterval(interval);
+          return;
+        }
+        const days = Math.floor(diff/864e5),
+              hrs  = Math.floor((diff%864e5)/36e5),
+              mins = Math.floor((diff%36e5)/6e4),
+              secs = Math.floor((diff%6e4)/1000);
+        out.textContent = 
+          days + 'd ' +
+          String(hrs).padStart(2,'0') + 'h ' +
+          String(mins).padStart(2,'0') + 'm ' +
+          String(secs).padStart(2,'0') + 's';
+      }
+      updateTimer();
+      const interval = setInterval(updateTimer, 1000);
+
+      // clicking Contact extends by 7 days
+      document.getElementById('contact-btn')
+        .addEventListener('click', () => {
+          deadline = addDays(deadline, 7);
+          localStorage.setItem(STORAGE_KEY, deadline);
+          updateTimer();
+        });
     })();
   </script>
 </body>
