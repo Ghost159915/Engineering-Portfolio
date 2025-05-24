@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Project One</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Project One — Benas Vaiciulis</title>
 
-  <!-- ─── Inline critical CSS (nav + hero) ─── -->
+  <!-- inline critical CSS for header + hero -->
   <style>
     @keyframes navEnter {
-      from { opacity:0; transform:translateY(-20px); }
-      to   { opacity:1; transform:translateY(0); }
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes contentEnter {
-      from { opacity:0; transform:translateY(20px); }
-      to   { opacity:1; transform:translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Sticky, centered nav */
     .site-header {
       position: sticky;
       top: 20px;
-      margin-bottom: 1.5rem;
       width: 100%;
       display: flex;
       justify-content: center;
       z-index: 1000;
+      margin-bottom: 1.5rem;
       pointer-events: none;
+      animation: navEnter 0.4s ease-out both;
     }
     .site-header .top-nav {
       pointer-events: all;
@@ -34,7 +34,6 @@
       padding: 0.5rem 1.5rem;
       background: #f5f5f5;
       border-radius: 9999px;
-      animation: navEnter 0.4s ease-out both;
     }
     .site-header .top-nav a {
       position: relative;
@@ -51,28 +50,94 @@
       background: #000;
     }
 
-    /* Fade-in for the main content */
-    .content-section,
-    .content-section img,
-    .content-section h1,
-    .content-section p {
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem;
       animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero__avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+      margin: 0 auto 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+
+    .content-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .content-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .content-section p {
+      line-height: 1.6;
+      color: #444;
+      text-align: center;
+    }
+
+    /* two-column image grid */
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .image-grid img {
+      width: calc(50% - 0.5rem);
+      height: auto;
+      border-radius: 0.25rem;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* download button style (reuses your btn-secondary) */
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #333;
+      color: #333;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #333;
+      color: #fff;
     }
   </style>
 
-  <!-- ─── Preload & Font Setup ─── -->
+  <!-- load rest of your CSS + fonts -->
   <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet">
 </head>
-<body class="projects-page">
+<body>
 
-  <!-- ─── Navigation (identical on every page) ─── -->
+  <!-- Nav (always same three links) -->
   <header class="site-header">
     <nav class="top-nav">
       <a href="projects.html" class="active">Projects</a>
@@ -81,28 +146,82 @@
     </nav>
   </header>
 
-  <!-- ─── Page‐Specific Content ─── -->
-  <section class="content-section" style="text-align:center; max-width:800px; margin:0 auto; padding:2rem 1rem;">
-    <h1>Project One</h1>
-    <p>A full-featured e-commerce platform built with React and Node.js.</p>
+  <!-- Hero / Title -->
+  <main class="hero-container">
+    <div class="hero">
+      <h1 class="hero__title">Bionic Hand</h1>
+      <div style="display:flex;justify-content:center;gap:4rem;margin:1rem 0;">
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Role</small><br>
+          <strong>Mechanical Design</strong>
+        </div>
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Year</small><br>
+          <strong>2023</strong>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <!-- Screenshot (lazy-loaded, responsive) -->
-    <img
-      src="assets/project1.png"
-      alt="Screenshot of Project One"
-      loading="lazy"
-      style="width:100%; max-width:700px; height:auto; margin:2rem auto; display:block;"
-    />
-  </section>
-
-  <!-- ─── Overview Section ─── -->
-  <section class="content-section" style="max-width:700px; margin:0 auto 3rem; padding:0 1rem;">
+  <!-- Overview -->
+  <section class="content-section">
     <h2>Overview</h2>
     <p>
-      Describe Project One here… what problems it solves, key features,
-      your role, technologies used, and any notable challenges or achievements.
+        The Bionic Hand project set out to design and build a simple, 
+        reliable mechanical prosthesis that enables a bilateral amputee 
+        to pick up and carry a 1 kg bag of groceries within five seconds 
+        and walk 20 m while holding it. Our team of six engineered a 
+        four-fingered gripper mounted on a wooden forearm-sized base, 
+        activated by a single button press to ensure ease of use without 
+        requiring the user’s opposite limb.
     </p>
   </section>
 
+  <!-- Key Screenshots -->
+  <section class="content-section">
+    <div class="image-grid">
+      <img src="assets/2FingerRender.png">
+      <img src="assets/BionicHandFinalImage.png" alt="3D-printed assembly">
+    </div>
+  </section>
+
+  <!-- Full Report Download -->
+  <section class="content-section">
+    <h2>My Role</h2>
+    <p>
+      I conceived the base idea and led the concept design of the bionic hand,
+      creating detailed CAD models in SolidWorks. I then prepared technical
+      drawings for each component and managed the 3D printing process to bring
+      the design to life.
+    </p>
+  </section>
+
+  <!-- Technical Drawings -->
+<section class="content-section">
+    <h2>Technical Drawings</h2>
+    <div class="image-grid three-up">
+      <figure>
+        <img src="assets/Finger1.png" alt="Technical drawing of Finger 1">
+        <figcaption>Finger 1: Proximal segment linking palm and middle phalanx</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/Finger2.png" alt="Technical drawing of Finger 2">
+        <figcaption>Finger 2: Distal phalanx (finger tip) design</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/Palm.png" alt="Technical drawing of Palm">
+        <figcaption>Palm: Central hub connecting all four fingers</figcaption>
+      </figure>
+    </div>
+  </section>
+  
+  
+  <!-- Full Report Download -->
+  <section class="content-section" style="text-align: center;">
+    <a href="assets/BionicHandFinalReport.pdf" download class="btn-secondary" style="display: inline-block; margin: 1rem auto 0;">
+      Download PDF Report
+    </a>
+  </section>
+  
 </body>
 </html>
