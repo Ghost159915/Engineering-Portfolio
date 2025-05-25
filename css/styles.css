@@ -32,7 +32,7 @@ h1,h2,h3,h4 { font-weight:500; }
   content:"";position:absolute;bottom:-.25rem;left:0;right:0;
   height:2px;background:#000;
 }
-/* hover underline for Projects & About */
+/* hover underline for non-active links */
 .site-header .top-nav a:not(.active):not(.btn-primary)::after{
   content:"";position:absolute;bottom:-.25rem;left:0;right:0;
   height:2px;background:transparent;transition:background .2s;
@@ -83,7 +83,7 @@ h1,h2,h3,h4 { font-weight:500; }
 
 /* — Content Sections — */
 .content-section{
-  max-width:800;margin:2rem auto;padding:0 1rem;
+  max-width:800px;margin:2rem auto;padding:0 1rem;
 }
 .content-section h2{
   font-size:1.75rem;margin-bottom:1rem;font-weight:600;
@@ -91,30 +91,54 @@ h1,h2,h3,h4 { font-weight:500; }
 .content-section p{line-height:1.6;color:#444}
 
 /* — Projects Grid — */
-/* — Projects Grid: 1 column on mobile, 2 on tablets+ — */
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr;   /* 1 column by default */
-  gap: 2rem;                    /* space between cards */
-  padding: 0 1rem 3rem;         /* your existing padding */
-  max-width: 1000px;            /* constrain grid width */
-  margin: 0 auto;               /* center on larger screens */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 0 1rem 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-
-/* from 768px up, switch to 2 columns */
 @media (min-width: 768px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.project-card{
-  background:#fafafa;border-radius:.5rem;padding:1rem;
-  text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.05);
+/* — Clickable Project Cards — */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.project-card img{width:100%;border-radius:4px;margin-bottom:1rem}
-.project-card h3{margin-bottom:.5rem}
-.project-card p{margin-bottom:1rem;color:#555}
+.project-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.project-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.project-card:hover img {
+  transform: scale(1.05);
+}
+.project-card h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  font-size: 1.1rem;
+}
 
 /* — Résumé Embed via PDF.js — */
 .resume-section{
@@ -131,32 +155,25 @@ h1,h2,h3,h4 { font-weight:500; }
 /* — Projects Page Overrides — */
 .projects-page .hero__avatar{width:120px;height:120px}
 
-/* Section wrapper */
+/* — Build Process Section — */
 .content-section.build-process {
   max-width: 700px;
   margin: 2rem auto;
   padding: 0 1rem;
   text-align: left;
 }
-
-/* Heading */
 .content-section.build-process h2 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-
-/* Intro and outro paragraphs */
 .content-section.build-process p {
   margin: 1rem 0;
   line-height: 1.6;
 }
-
-/* Steps list */
 .content-section.build-process ol {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
 }
-
 .content-section.build-process ol li {
   margin-bottom: 0.75rem;
 }

@@ -81,17 +81,17 @@
 
   <!-- Résumé Embed via PDF.js -->
   <section class="resume-section">
-    <h2>Résumé</h2>
+    <h2>Resume</h2>
     <canvas id="pdf-canvas"></canvas>
-    <a href="assets/resume.pdf" download class="btn-secondary">
-      Download Résumé (PDF)
+    <a href="assets/BenasVaiciulisResume.pdf" download class="btn-secondary">
+      Download Resume (PDF)
     </a>
   </section>
 
   <!-- PDF.js Rendering Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const url = 'assets/resume.pdf';
+      const url = 'assets/benasvaiciulisresume.pdf';
       const canvas = document.getElementById('pdf-canvas');
       const ctx = canvas.getContext('2d');
       const container = document.querySelector('.resume-section');
