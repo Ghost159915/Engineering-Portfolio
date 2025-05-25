@@ -130,3 +130,33 @@ h1,h2,h3,h4 { font-weight:500; }
 
 /* — Projects Page Overrides — */
 .projects-page .hero__avatar{width:120px;height:120px}
+
+/* Section wrapper */
+.content-section.build-process {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+/* Heading */
+.content-section.build-process h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Intro and outro paragraphs */
+.content-section.build-process p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+/* Steps list */
+.content-section.build-process ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.content-section.build-process ol li {
+  margin-bottom: 0.75rem;
+}
