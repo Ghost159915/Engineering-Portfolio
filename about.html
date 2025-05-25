@@ -124,47 +124,72 @@
   <!-- COUNTDOWN + CONTACT +=7 DAYS SCRIPT -->
   <script>
     (function(){
-      const STORAGE_KEY = 'offer_deadline';
-      const DEFAULT_DAYS = 90;
+      const STORAGE_KEY      = 'offer_deadline';
+      const DEFAULT_DAYS     = 8;
+      const DEFAULT_HOURS    = 5;
+      const DEFAULT_MINUTES  = 0;
+      const DEFAULT_SECONDS  = 24;
+  
       // helper to add days
       function addDays(date, days) {
         return new Date(date.getTime() + days*24*60*60*1000);
       }
+  
+      // helper to add hours/mins/secs
+      function offsetTime(base, days, hours, mins, secs) {
+        return new Date(
+          base.getTime()
+          + days   * 24*60*60*1000
+          + hours  *    60*60*1000
+          + mins   *       60*1000
+          + secs   *          1000
+        );
+      }
+  
       // load or init deadline
       let raw = localStorage.getItem(STORAGE_KEY),
-          deadline = raw ? new Date(raw) : addDays(new Date(), DEFAULT_DAYS);
-      if(!raw) localStorage.setItem(STORAGE_KEY, deadline);
-
+          deadline;
+      if (raw) {
+        deadline = new Date(raw);
+      } else {
+        deadline = offsetTime(new Date(), DEFAULT_DAYS, DEFAULT_HOURS, DEFAULT_MINUTES, DEFAULT_SECONDS);
+        localStorage.setItem(STORAGE_KEY, deadline.toISOString());
+      }
+  
       const out = document.getElementById('countdown');
+  
       function updateTimer(){
-        const now = new Date(),
+        const now  = new Date(),
               diff = deadline - now;
-        if(diff <= 0){
+        if (diff <= 0) {
           out.textContent = '⏰ Deadline passed!';
           clearInterval(interval);
           return;
         }
-        const days = Math.floor(diff/864e5),
-              hrs  = Math.floor((diff%864e5)/36e5),
-              mins = Math.floor((diff%36e5)/6e4),
-              secs = Math.floor((diff%6e4)/1000);
+        const days = Math.floor(diff / 864e5),
+              hrs  = Math.floor((diff % 864e5) / 36e5),
+              mins = Math.floor((diff % 36e5)  / 6e4),
+              secs = Math.floor((diff % 6e4)   / 1e3);
+  
         out.textContent = 
           days + 'd ' +
           String(hrs).padStart(2,'0') + 'h ' +
           String(mins).padStart(2,'0') + 'm ' +
           String(secs).padStart(2,'0') + 's';
       }
+  
       updateTimer();
       const interval = setInterval(updateTimer, 1000);
-
-      // clicking Contact extends by 7 days
+  
+      // clicking Contact extends by 1 day (not a week)
       document.getElementById('contact-btn')
         .addEventListener('click', () => {
-          deadline = addDays(deadline, 7);
-          localStorage.setItem(STORAGE_KEY, deadline);
+          deadline = addDays(deadline, 1);
+          localStorage.setItem(STORAGE_KEY, deadline.toISOString());
           updateTimer();
         });
     })();
   </script>
+  
 </body>
 </html>
