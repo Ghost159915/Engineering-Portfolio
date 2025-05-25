@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Project three</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Project One — Benas Vaiciulis</title>
 
-  <!-- ─── Inline critical CSS (nav + hero) ─── -->
+  <!-- inline critical CSS for header + hero -->
   <style>
     @keyframes navEnter {
-      from { opacity:0; transform:translateY(-20px); }
-      to   { opacity:1; transform:translateY(0); }
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes contentEnter {
-      from { opacity:0; transform:translateY(20px); }
-      to   { opacity:1; transform:translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Sticky, centered nav */
     .site-header {
       position: sticky;
       top: 20px;
-      margin-bottom: 1.5rem;
       width: 100%;
       display: flex;
       justify-content: center;
       z-index: 1000;
+      margin-bottom: 1.5rem;
       pointer-events: none;
+      animation: navEnter 0.4s ease-out both;
     }
     .site-header .top-nav {
       pointer-events: all;
@@ -34,7 +34,6 @@
       padding: 0.5rem 1.5rem;
       background: #f5f5f5;
       border-radius: 9999px;
-      animation: navEnter 0.4s ease-out both;
     }
     .site-header .top-nav a {
       position: relative;
@@ -51,28 +50,94 @@
       background: #000;
     }
 
-    /* Fade-in for the main content */
-    .content-section,
-    .content-section img,
-    .content-section h1,
-    .content-section p {
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem;
       animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero__avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+      margin: 0 auto 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+
+    .content-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .content-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .content-section p {
+      line-height: 1.6;
+      color: #444;
+      text-align: center;
+    }
+
+    /* two-column image grid */
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .image-grid img {
+      width: calc(50% - 0.5rem);
+      height: auto;
+      border-radius: 0.25rem;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* download button style (reuses your btn-secondary) */
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #333;
+      color: #333;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #333;
+      color: #fff;
     }
   </style>
 
-  <!-- ─── Preload & Font Setup ─── -->
+  <!-- load rest of your CSS + fonts -->
   <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet">
 </head>
-<body class="projects-page">
+<body>
 
-  <!-- ─── Navigation (identical on every page) ─── -->
+  <!-- Nav (always same three links) -->
   <header class="site-header">
     <nav class="top-nav">
       <a href="projects.html" class="active">Projects</a>
@@ -81,28 +146,61 @@
     </nav>
   </header>
 
-  <!-- ─── Page‐Specific Content ─── -->
-  <section class="content-section" style="text-align:center; max-width:800px; margin:0 auto; padding:2rem 1rem;">
-    <h1>Project three</h1>
-    <p>A full-featured e-commerce platform built with React and Node.js.</p>
+  <!-- Hero / Title -->
+  <main class="hero-container">
+    <div class="hero">
+      <h1 class="hero__title">Search and Rescue Drone</h1>
+      <div style="display:flex;justify-content:center;gap:4rem;margin:1rem 0;">
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Role</small><br>
+          <strong>Robotic System Programming</strong>
+        </div>
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Year</small><br>
+          <strong>2024</strong>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <!-- Screenshot (lazy-loaded, responsive) -->
-    <img
-      src="assets/project1.png"
-      alt="Screenshot of Project One"
-      loading="lazy"
-      style="width:100%; max-width:700px; height:auto; margin:2rem auto; display:block;"
-    />
-  </section>
-
-  <!-- ─── Overview Section ─── -->
-  <section class="content-section" style="max-width:700px; margin:0 auto 3rem; padding:0 1rem;">
+  <!-- Overview -->
+  <section class="content-section">
     <h2>Overview</h2>
     <p>
-      Describe Project three here… what problems it solves, key features,
-      your role, technologies used, and any notable challenges or achievements.
+      In this simulated search-and-rescue scenario, we developed two autonomous C++-powered robots to 
+      navigate a complex maze of walls, locate enclosed “target zones,” and coordinate their actions. 
+      Each robot maintained a precise wall-following envelope (0.2–0.5 m clearance)—Robot 1 using UV 
+      infrared arrays, Robot 2 employing LiDAR—and continuously logged wall positions and clearance 
+      distances to an external notes file for post-mission analysis. Upon detecting a fully enclosed 
+      zone (walls on front, left, and right), the discovering robot broadcasted a “target found” 
+      message via a custom communication protocol. Both robots then halted, acknowledged the discovery, 
+      and executed a synchronized homing routine to their start point with ±1 m accuracy. The project 
+      mimicked drone search-and-rescue missions, emphasizing robust obstacle avoidance, dynamic path 
+      replanning, and precise data logging.
     </p>
   </section>
 
+  <!-- Key Screenshots -->
+  <section class="content-section">
+    <div class="image-grid">
+      <img 
+        src="assets/Webots.jpg" 
+        alt="Webots Maze Simulation" 
+        style="width:100%; max-width:800px; display:block; margin:0 auto;"
+      >
+    </div>
+  </section>
+
+  <!-- Project Three: Autonomous Land Drone -->
+<section class="content-section">
+
+  <!-- GitHub Repo Badge/Button -->
+  <p style="text-align: center; margin: 1rem 0;">
+    <a href="https://github.com/UNSW-MTRN2500/webots-Ghost159915" target="_blank"
+       class="btn-secondary" style="display: inline-block; margin: 0 auto;">
+      View the Code on GitHub
+    </a>
+  </p>
+</section>
 </body>
 </html>
