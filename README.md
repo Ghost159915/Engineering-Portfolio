@@ -1,67 +1,67 @@
 # Engineering Portfolio
 
-A clean, minimalist, single-page portfolio site built with plain HTML, CSS and JavaScript. It’s designed to showcase your work, skills and résumé in a lightweight, responsive package. Navigation between sections happens via simple page links (or optional animated transitions), and your résumé is embedded directly in the “About” page for quick in-browser viewing with a one-click download.
+Static portfolio site built with HTML, CSS, and vanilla JavaScript.
 
----
+## Running locally
 
-## Table of Contents
+```bash
+cd Engineering-Portfolio
+python3 -m http.server 8000
+```
 
-1. [Project Overview](#project-overview)  
-2. [Features](#features)  
-3. [Tech Stack](#tech-stack)  
-4. [Getting Started](#getting-started)  
-   - [Prerequisites](#prerequisites)  
-   - [Installation](#installation)  
-   - [Running Locally](#running-locally)  
-5. [Project Structure](#project-structure)  
-6. [Customizing Your Content](#customizing-your-content)  
-7. [Deployment](#deployment)  
-8. [Contributing](#contributing)  
-9. [License](#license)  
+Open `http://localhost:8000/about.html`.
 
----
+## Architecture
 
-## Project Overview
+The codebase is organized around canonical pages plus compatibility redirects.
 
-This repository contains a simple, yet flexible, portfolio website template. It emphasizes:
+### Top-level pages
 
-- **Clarity & Readability**: A clean layout with ample whitespace and a focus on your photo, name, tagline, and résumé.
-- **Responsiveness**: Looks great on desktop, tablet, and mobile.
-- **Ease of Use**: No build tools or frameworks—just clone, edit your text/images, and publish.
-- **Embed & Download**: Your résumé is embedded via `<iframe>`/PDF.js for in-browser preview, plus a download button.
+- `about.html` - landing/about page
+- `projects.html` - project listing + featured carousel
+- `contact.html` - contact form page
+- `index.html` - redirect to `about.html`
 
----
+### Canonical project pages
 
-## Features
+Primary project detail pages live in:
 
-- **Sticky, centered navigation** with pill-shaped “Projects”, “About”, and “Contact” links.
-- **Hero section**: Circular avatar, your name, a short bio/tagline, and call-to-action buttons.
-- **About section**: In-page résumé embed + download link.
-- **Projects grid**: Card layout for highlighting repo links or case studies.
-- **Optional page-transition animations** (forward/backward slide).
-- **Mobile-first** CSS with fluid typography and layouts.
+- `pages/projects/teleoperation.html`
+- `pages/projects/weather-prediction-system.html`
+- `pages/projects/movie-recommender-system.html`
+- `pages/projects/micromouse.html`
+- `pages/projects/bionic-hand.html`
+- `pages/projects/kfc-bucket.html`
+- `pages/projects/search-and-rescue-drone.html`
+- `pages/projects/ai-assisted-web-development.html`
+- `pages/projects/project-five-placeholder.html`
+- `pages/projects/project-six-placeholder.html`
 
----
+### Legacy compatibility routes
 
-## Tech Stack
+Legacy root-level files (for old links/bookmarks) are kept as redirect wrappers:
 
-- **HTML5**: Semantically structured pages  
-- **CSS3**: Flexbox, Grid, custom properties (no preprocessors)  
-- **Vanilla JavaScript**: Light interactivity (nav active state, transitions, PDF.js embed)  
-- **PDF.js** (optional): Clean résumé embed without heavy browser UI  
+- `project-one.html`, `project-two.html`, `project-three.html`, `project-four.html`, `project-five.html`, `project-six.html`
+- `project-teleoperation.html`, `project-weather.html`, `project-movie-recommender.html`, `project-micromouse.html`
 
----
+These redirect to canonical files in `pages/projects/`.
 
-## Getting Started
+### Static assets
 
-### Prerequisites
+- `css/styles.css` - global styles, components, page sections, responsive rules
+- `js/featured-carousel.js` - featured project carousel behavior
+- `js/contact-form.js` - contact form client-side handling
+- `assets/` - images, PDFs, and media assets
 
-- A modern web browser (Chrome, Firefox, Safari, Edge).  
-- **(Optional)** A simple HTTP server for local testing (e.g. VS Code Live Server, Python’s `http.server`, etc.).
+## Naming conventions
 
-### Installation
+- Project pages use descriptive, kebab-case filenames.
+- JavaScript behavior is extracted to dedicated files under `js/`.
+- Root-level legacy filenames are retained only for backward compatibility.
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/YourUsername/Engineering-Portfolio.git
-   cd Engineering-Portfolio
+## Editing guidelines
+
+- Add new project detail pages in `pages/projects/`.
+- Link project cards in `projects.html` to canonical pages, not legacy wrappers.
+- Keep visual design changes centralized in `css/styles.css`.
+- Keep page-specific behavior in `js/` files.

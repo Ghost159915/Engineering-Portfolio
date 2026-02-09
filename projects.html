@@ -45,7 +45,7 @@
         <div class="featured-viewport">
           <div class="featured-track" id="featured-track">
             <article class="project-card featured ai">
-              <a href="project-teleoperation.html">
+              <a href="pages/projects/teleoperation.html">
                 <span class="project-card__badge">Featured</span>
                 <img src="assets/teleoperation-placeholder.svg" alt="Teleoperation" />
                 <div class="project-card-content">
@@ -61,7 +61,7 @@
             </article>
 
             <article class="project-card featured ai">
-              <a href="project-weather.html">
+              <a href="pages/projects/weather-prediction-system.html">
                 <span class="project-card__badge">Featured</span>
                 <img src="assets/AIWebDev.jpg" alt="Weather prediction system" />
                 <div class="project-card-content">
@@ -77,7 +77,7 @@
             </article>
 
             <article class="project-card featured ai">
-              <a href="project-movie-recommender.html">
+              <a href="pages/projects/movie-recommender-system.html">
                 <span class="project-card__badge">Featured</span>
                 <img src="assets/AI.jpg" alt="Movie recommender system" />
                 <div class="project-card-content">
@@ -104,7 +104,7 @@
     </div>
     <div class="projects-grid">
       <article class="project-card">
-        <a href="project-one.html">
+        <a href="pages/projects/bionic-hand.html">
           <img src="assets/FinalHand.png" alt="Bionic Hand" />
           <div class="project-card-content">
             <h3>Bionic Hand</h3>
@@ -118,7 +118,7 @@
       </article>
 
       <article class="project-card">
-        <a href="project-two.html">
+        <a href="pages/projects/kfc-bucket.html">
           <img src="assets/SDG.png" alt="KFC Bucket" />
           <div class="project-card-content">
             <h3>KFC Bucket</h3>
@@ -132,7 +132,7 @@
       </article>
 
       <article class="project-card">
-        <a href="project-three.html">
+        <a href="pages/projects/search-and-rescue-drone.html">
           <img src="assets/Webots.jpg" alt="Search and Rescue Drone" />
           <div class="project-card-content">
             <h3>Search and Rescue Drone</h3>
@@ -146,7 +146,7 @@
       </article>
 
       <article class="project-card">
-        <a href="project-four.html">
+        <a href="pages/projects/ai-assisted-web-development.html">
           <img src="assets/AIWebDev.jpg" alt="AI-Assisted Web Development" />
           <div class="project-card-content">
             <h3>AI-Assisted Web Development</h3>
@@ -160,7 +160,7 @@
       </article>
 
       <article class="project-card">
-        <a href="project-micromouse.html">
+        <a href="pages/projects/micromouse.html">
           <img src="assets/Webots.jpg" alt="Micromouse" />
           <div class="project-card-content">
             <h3>Micromouse</h3>
@@ -174,59 +174,7 @@
       </article>
     </div>
   </section>
-  <script>
-    const track = document.getElementById('featured-track');
-    const prev = document.getElementById('featured-prev');
-    const next = document.getElementById('featured-next');
-    const viewport = document.querySelector('.featured-viewport');
-    const originalCards = Array.from(track.querySelectorAll('.project-card'));
-    let index = 0;
-    let locked = false;
-
-    if (originalCards.length > 1) {
-      const firstClone = originalCards[0].cloneNode(true);
-      const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
-      track.insertBefore(lastClone, originalCards[0]);
-      track.appendChild(firstClone);
-    }
-
-    function cardWidth() {
-      return viewport.clientWidth;
-    }
-
-    function jumpToIndex(nextIndex) {
-      if (!originalCards.length || locked) return;
-      locked = true;
-      const total = originalCards.length;
-      const w = cardWidth();
-      index = nextIndex;
-      track.scrollTo({ left: (index + 1) * w, behavior: 'smooth' });
-
-      setTimeout(() => {
-        if (index < 0) {
-          index = total - 1;
-          track.scrollTo({ left: total * w, behavior: 'auto' });
-        } else if (index >= total) {
-          index = 0;
-          track.scrollTo({ left: w, behavior: 'auto' });
-        }
-        locked = false;
-      }, 420);
-    }
-
-    function goNext() { jumpToIndex(index + 1); }
-    function goPrev() { jumpToIndex(index - 1); }
-
-    prev.addEventListener('click', goPrev);
-    next.addEventListener('click', goNext);
-
-    window.addEventListener('resize', () => {
-      track.scrollTo({ left: (index + 1) * cardWidth(), behavior: 'auto' });
-    });
-    window.addEventListener('load', () => {
-      track.scrollTo({ left: (index + 1) * cardWidth(), behavior: 'auto' });
-    });
-  </script>
+  <script src="js/featured-carousel.js" defer></script>
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
