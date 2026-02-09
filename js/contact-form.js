@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const payload = new FormData(form);
-    const endpoint = 'https://formsubmit.co/ajax/benasvaiciulis@gmail.com';
+    const endpoint = 'https://formsubmit.co/ajax/4b8822a3404b56757f61a1de10328f7d';
 
     submit.disabled = true;
     submit.textContent = 'Sending...';
