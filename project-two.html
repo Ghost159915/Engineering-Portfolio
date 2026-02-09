@@ -2,262 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Project Two — Benas Vaiciulis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KFC Bucket - Benas Vaičiulis</title>
 
-  <!-- inline critical CSS for header + hero -->
-  <style>
-    @keyframes navEnter {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes contentEnter {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .site-header {
-      position: sticky;
-      top: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-      margin-bottom: 1.5rem;
-      pointer-events: none;
-      animation: navEnter 0.4s ease-out both;
-    }
-    .site-header .top-nav {
-      pointer-events: all;
-      display: inline-flex;
-      gap: 1.5rem;
-      padding: 0.5rem 1.5rem;
-      background: #f5f5f5;
-      border-radius: 9999px;
-    }
-    .site-header .top-nav a {
-      position: relative;
-      text-decoration: none;
-      color: #000;
-      font-weight: 500;
-    }
-    .site-header .top-nav a.active::after {
-      content: "";
-      position: absolute;
-      bottom: -0.25rem;
-      left: 0; right: 0;
-      height: 2px;
-      background: #000;
-    }
-
-    .hero-container {
-      display: flex;
-      justify-content: center;
-      padding: 0 1rem;
-      animation: contentEnter 0.5s ease-out both 0.3s;
-    }
-    .hero {
-      flex: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 2rem 1rem;
-      animation: contentEnter 0.5s ease-out both 0.3s;
-    }
-    .hero__avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #eee;
-      margin: 0 auto 1rem;
-      animation: contentEnter 0.5s ease-out both 0.3s;
-    }
-
-    .content-section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      animation: contentEnter 0.5s ease-out both 0.3s;
-    }
-    .content-section h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-    .content-section p {
-      line-height: 1.6;
-      color: #444;
-      text-align: center;
-    }
-
-    /* two-column image grid */
-    .image-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .image-grid img {
-      width: calc(50% - 0.5rem);
-      height: auto;
-      border-radius: 0.25rem;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    /* download button style (reuses your btn-secondary) */
-    .btn-secondary {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid #333;
-      color: #333;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-secondary:hover {
-      background: #333;
-      color: #fff;
-    }
-  </style>
-
-  <!-- load rest of your CSS + fonts -->
-  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-    rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
-  <!-- Nav (always same three links) -->
   <header class="site-header">
-    <nav class="top-nav">
-      <a href="projects.html" class="active">Projects</a>
-      <a href="about.html">About</a>
-      <a href="mailto:benasvaiciulis@gmail.com" class="btn-primary">Contact</a>
-    </nav>
+    <div class="container nav">
+      <a class="brand" href="about.html">Benas Vaičiulis</a>
+      <nav class="nav-links">
+        <a href="projects.html" class="active">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn-primary">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero / Title -->
-  <main class="hero-container">
-    <div class="hero">
-      <h1 class="hero__title">KFC Bucket</h1>
-      <div style="display:flex;justify-content:center;gap:4rem;margin:1rem 0;">
-        <div>
-          <small style="text-transform:uppercase;color:#666;">Role</small><br>
+  <main class="container project-hero">
+    <div class="project-hero-grid">
+      <div>
+        <p class="eyebrow">Project</p>
+        <h1 class="project-title">KFC Bucket</h1>
+        <p class="project-subtitle">Autonomous water drone for debris removal.</p>
+      </div>
+      <div class="project-meta">
+        <div class="meta-card">
+          <span>Role</span>
           <strong>Mechanical Design</strong>
         </div>
-        <div>
-          <small style="text-transform:uppercase;color:#666;">Year</small><br>
+        <div class="meta-card">
+          <span>Year</span>
           <strong>2024</strong>
+        </div>
+        <div class="meta-card">
+          <span>Stack</span>
+          <strong>GPS, IMU, LiDAR, Control</strong>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Overview -->
-  <section class="content-section">
+  <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      The Kleanup for Koastlines (KFC) project developed an autonomous 
-      water drone to remove floating plastic debris, supporting UN SDG 14.
-      A six-member team designed a hexagonal HDPT hull housing dual 36 V 
-      brushless motors and spiral propellers, powered by parallel Bosch 
-      500 Wh batteries for over 2 hours at up to 2 m/s. Perception blends 
-      Ublox NEO-M8N GPS, MPU-9250 IMU, and TF02-Pro LiDAR (40 m range). 
-      Custom control software fuses waypoint navigation, PI steering, 
-      and Dijkstra-based rerouting to dynamically intercept debris. 
-      Prototyping and simulations confirmed buoyancy, stability, and 
-      fully autonomous operation in marine conditions.
+      The Kleanup for Koastlines (KFC) project developed an autonomous water drone
+      to remove floating plastic debris, supporting UN SDG 14. A six-member team
+      designed a hexagonal HDPT hull housing dual 36 V brushless motors and spiral
+      propellers, powered by parallel Bosch 500 Wh batteries for over 2 hours at up
+      to 2 m/s. Perception blends Ublox NEO-M8N GPS, MPU-9250 IMU, and TF02-Pro LiDAR
+      (40 m range). Custom control software fuses waypoint navigation, PI steering,
+      and Dijkstra-based rerouting to dynamically intercept debris. Prototyping and
+      simulations confirmed buoyancy, stability, and fully autonomous operation in
+      marine conditions.
     </p>
   </section>
 
-   <!-- First Technical Image -->
-   <section class="content-section">
-    <img 
-      src="assets/SDG.png" 
-      alt="Technical drawing of Finger 1" 
-      style="width:100%; max-width:600px; display:block; margin:0 auto;"
-    >
+  <section class="container project-section">
+    <h2>Design visuals</h2>
+    <div class="gallery">
+      <img src="assets/SDG.png" alt="KFC Bucket schematic" />
+      <img src="assets/KFCDesign.jpeg" alt="KFC Bucket design" />
+    </div>
   </section>
 
-  <!-- My Role Section -->
-  <section class="content-section">
+  <section class="container project-section">
     <h2>My Role</h2>
     <p>
-      I originated the drone’s core concept, selected its GPS, 
-      IMU, and LiDAR sensors for reliable autonomy, and implemented 
-      navigation algorithms integrating waypoint planning, PI control, 
-      and Dijkstra-based obstacle rerouting.
+      I originated the drone's core concept, selected its GPS, IMU, and LiDAR
+      sensors for reliable autonomy, and implemented navigation algorithms
+      integrating waypoint planning, PI control, and Dijkstra-based obstacle
+      rerouting.
     </p>
   </section>
 
-  <!-- Second Technical Image -->
-  <section class="content-section">
-    <img 
-      src="assets/KFCDesign.jpeg" 
-      alt="3D-printed assembly" 
-      style="width:100%; max-width:600px; display:block; margin:0 auto;"
-    >
+  <section class="container project-section">
+    <h2>System Schematic</h2>
+    <figure>
+      <img src="assets/Schematic.png" alt="Wiring and power schematic" />
+      <figcaption>
+        Collaborative schematic (with Marcus Gatt) illustrating how the Li-ion
+        battery pack, 36 V regulator, buck converter, motor driver, Raspberry Pi,
+        LiDAR, GPS and IMU interconnect.
+      </figcaption>
+    </figure>
+    <p>
+      I worked alongside Marcus Gatt to map out every power rail and signal path,
+      selecting the step-down converter to reliably feed the Raspberry Pi and
+      sensors, and routing the high-current lines to the motor driver for our
+      dual-propulsion system.
+    </p>
   </section>
 
-  <!-- System Schematic -->
-<section class="content-section">
-  <h2>System Schematic</h2>
-  <figure>
-    <img 
-      src="assets/Schematic.png" 
-      alt="Wiring and power schematic" 
-      style="width:100%; max-width:600px; display:block; margin:0 auto;"
-    >
-    <figcaption>
-      Collaborative schematic (with Marcus Gatt) illustrating how the Li-ion battery pack, 36 V regulator,
-      buck converter, motor driver, Raspberry Pi, LiDAR, GPS and IMU interconnect.
-    </figcaption>
-  </figure>
-  <p>
-    I worked alongside Marcus Gatt to map out every power rail and signal path—selecting the step-down
-    converter to reliably feed the Raspberry Pi and sensors, and routing the high-current lines to the
-    motor driver for our dual-propulsion system.
-  </p>
-</section>
+  <section class="container project-section">
+    <h2>Expanded CAD View</h2>
+    <figure>
+      <img src="assets/KFCExpanded.png" alt="Exploded CAD view of the water drone" />
+      <figcaption>
+        Exploded CAD assembly (co-modeled with Dave Cooper) showing the hex-frame
+        hull, battery pack, propeller housings and mounting points.
+      </figcaption>
+    </figure>
+    <p>
+      Dave Cooper and I collaborated on the detailed SolidWorks model, defining
+      part clearances for rapid assembly and ensuring each compartment aligned
+      precisely for optimal buoyancy and easy maintenance in the field.
+    </p>
+  </section>
 
-<!-- Expanded CAD View -->
-<section class="content-section" style="text-align: center;">
-  <h2>Expanded CAD View</h2>
-  <figure>
-    <img 
-      src="assets/KFCExpanded.png" 
-      alt="Exploded CAD view of the water drone" 
-      style="width:100%; max-width:600px; display:block; margin:0 auto;"
-    >
-    <figcaption>
-      Exploded CAD assembly (co-modeled with Dave Cooper) showing the hex‐frame hull, battery pack,
-      propeller housings and mounting points.
-    </figcaption>
-  </figure>
-  <p>
-    Dave Cooper and I collaborated on the detailed SolidWorks model—defining part clearances
-    for rapid assembly and ensuring each compartment aligned precisely for optimal buoyancy
-    and easy maintenance in the field.
-  </p>
-</section>
-
-  
-  <!-- Full Report Download -->
-  <section class="content-section" style="text-align: center;">
-    <a href="assets/Desn2000FinalReport.pdf" download class="btn-secondary" style="display: inline-block; margin: 1rem auto 0;">
+  <section class="container project-section">
+    <a href="assets/Desn2000FinalReport.pdf" download class="btn-secondary">
       Download PDF Report
     </a>
   </section>
-  
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-title">Benas Vaičiulis</p>
+        <p class="footer-text">Mechatronics engineer building robotic systems with precision and care.</p>
+      </div>
+      <div class="footer-links">
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/benasvaiciulis" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Ghost159915" target="_blank">GitHub</a>
+        <a href="https://www.instagram.com/benas_vaiciulis/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
