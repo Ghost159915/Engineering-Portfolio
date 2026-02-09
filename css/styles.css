@@ -355,6 +355,12 @@ p { color: var(--muted); }
   font-size: 0.9rem;
   color: var(--muted);
 }
+.form-note.success {
+  color: #7dd3fc;
+}
+.form-note.error {
+  color: #fda4af;
+}
 
 .timer-section {
   max-width: 560px;
