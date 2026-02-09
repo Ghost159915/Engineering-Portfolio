@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Teleoperation - Benas Vaiciulis</title>
+
+  <!-- inline critical CSS for header + hero -->
+  <style>
+    @keyframes navEnter {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes contentEnter {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .site-header {
+      position: sticky;
+      top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      margin-bottom: 1.5rem;
+      pointer-events: none;
+      animation: navEnter 0.4s ease-out both;
+    }
+    .site-header .top-nav {
+      pointer-events: all;
+      display: inline-flex;
+      gap: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      background: #f5f5f5;
+      border-radius: 9999px;
+    }
+    .site-header .top-nav a {
+      position: relative;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+    .site-header .top-nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -0.25rem;
+      left: 0; right: 0;
+      height: 2px;
+      background: #000;
+    }
+
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      padding: 0 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .hero__subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+
+    .content-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      animation: contentEnter 0.5s ease-out both 0.3s;
+    }
+    .content-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .content-section p {
+      line-height: 1.6;
+      color: #444;
+      text-align: center;
+    }
+
+    .tech-stack {
+      text-align: center;
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #333;
+      color: #333;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    .media-placeholder {
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border: 1px dashed #c7c7c7;
+      border-radius: 0.75rem;
+      color: #666;
+      background: #fafafa;
+    }
+  </style>
+
+  <!-- load rest of your CSS + fonts -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+
+  <!-- Nav (always same three links) -->
+  <header class="site-header">
+    <nav class="top-nav">
+      <a href="projects.html" class="active">Projects</a>
+      <a href="about.html">About</a>
+      <a href="mailto:benasvaiciulis@gmail.com" class="btn-primary">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Title -->
+  <main class="hero-container">
+    <div class="hero">
+      <h1 class="hero__title">Teleoperation</h1>
+      <p class="hero__subtitle">Remote Control System of UR5e</p>
+      <div style="display:flex;justify-content:center;gap:4rem;margin:1rem 0;flex-wrap:wrap;">
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Role</small><br>
+          <strong>Solo engineering project</strong>
+        </div>
+        <div>
+          <small style="text-transform:uppercase;color:#666;">Status</small><br>
+          <strong>Ongoing</strong>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Overview -->
+  <section class="content-section">
+    <h2>Overview</h2>
+    <p>
+      This project establishes a seamless teleoperation link between a custom-fabricated miniature
+      robotic arm and a commercial UR5e industrial manipulator. By mapping the joint kinematics of the
+      hobby-scale model to the Universal Robots environment, the system translates manual tactile
+      inputs into high-precision industrial movement in real time. The integration utilizes a custom
+      software bridge to handle signal processing and latency compensation, ensuring the UR5e
+      accurately mirrors the user's commands. This setup demonstrates a scalable approach to remote
+      manipulation, bridging the gap between cost-effective prototyping and robust industrial execution.
+    </p>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="content-section">
+    <h2>Tech Stack</h2>
+    <p class="tech-stack">
+      Python, C++, ROS2, Linux (Ubuntu), ESP32, CAD, 3D printing
+    </p>
+  </section>
+
+  <!-- Media Placeholder -->
+  <section class="content-section">
+    <div class="media-placeholder">
+      Media coming soon. Videos and images will be added here.
+    </div>
+  </section>
+
+  <!-- Repository -->
+  <section class="content-section" style="text-align:center;">
+    <a href="https://github.com/Ghost159915/UR5e-teleop.git" target="_blank" class="btn-secondary">
+      View the Code on GitHub
+    </a>
+  </section>
+
+</body>
+</html>
