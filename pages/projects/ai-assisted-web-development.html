@@ -38,7 +38,7 @@
       <div>
         <p class="eyebrow">Project</p>
         <h1 class="project-title">AI Assisted Web Development</h1>
-        <p class="project-subtitle">Portfolio built with AI-assisted planning and iteration.</p>
+        <p class="project-subtitle">Full-stack portfolio site designed, built, and iterated using AI as a development partner — from architecture decisions to deployment.</p>
       </div>
       <div class="project-meta">
         <div class="meta-card">
@@ -60,36 +60,40 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      In this capstone project, I partnered with ChatGPT to architect, prototype,
-      and refine my personal engineering portfolio site. Leveraging conversational
-      prompts, I sketched the site map, iterated on responsive layouts using CSS
-      flex and grid, and honed interactive components such as countdown timers,
-      image galleries, and GitHub embed sections. AI guidance streamlined critical
-      decisions, suggested semantic HTML structures, and provided concise copy for
-      project overviews.
+      This project is the portfolio site you're reading right now. It was designed
+      and built using AI as an active development partner — not just for boilerplate,
+      but for architectural decisions, layout iteration, component design, and copy
+      review. The goal was to ship a polished, production-quality site rapidly while
+      genuinely learning the web stack in the process.
+    </p>
+    <p>
+      Rather than using a site builder or template, every line of HTML, CSS, and
+      JavaScript was written from scratch via a conversational prompting workflow
+      with Claude Code. This forced a deep engagement with semantic structure,
+      responsive design, and browser behaviour that a template would have hidden.
     </p>
   </section>
 
   <section class="container project-section">
     <h2>Key screenshot</h2>
     <div class="gallery">
-      <img src="../../assets/AI.jpg" alt="AI-assisted build" />
+      <img src="../../assets/AI.jpg" alt="AI-assisted build workflow" />
     </div>
   </section>
 
   <section class="container project-section">
     <h2>How it was built</h2>
     <ol class="bullet-list">
-      <li>Outlined requirements for the About, Projects, and Contact sections.</li>
-      <li>Crafted precise prompts for semantic HTML, responsive CSS, and JS.</li>
-      <li>Iterated on layouts, typography, and content for clarity.</li>
-      <li>Committed changes to GitHub using version control workflows.</li>
-      <li>Deployed with Netlify using a custom domain and SSL.</li>
+      <li><strong>Architecture first:</strong> Defined the page hierarchy (About, Projects, Contact, per-project detail pages) and component structure before writing any code, using AI to stress-test the information architecture against real user flows.</li>
+      <li><strong>Prompt-driven HTML/CSS:</strong> Each section was built through iterative prompts — describing the desired layout, receiving a candidate implementation, reviewing it against design goals, and refining. This cycle exposed the reasoning behind every CSS rule.</li>
+      <li><strong>Responsive layout system:</strong> The grid and flex layout system uses CSS custom properties for spacing and breakpoints, making the design consistent and easy to extend as new project pages are added.</li>
+      <li><strong>Progressive enhancement:</strong> Interactive components (the featured carousel, the contact form AJAX handler) were added after static structure and styling were stable, keeping the core content accessible without JavaScript.</li>
+      <li><strong>Version control and deployment:</strong> All changes were committed incrementally to GitHub with meaningful commit messages. Deployed to Netlify with a custom domain and HTTPS via automatic Let's Encrypt provisioning.</li>
     </ol>
     <p>
-      While AI wrote the core code, I reviewed and adjusted every snippet, quickly
-      mastering web fundamentals. This rapid, AI-driven workflow delivered a
-      polished portfolio in one day and is a model I will apply to future projects.
+      The outcome demonstrates that AI-assisted development is not about writing less
+      code — it is about spending more time on decisions and less time on syntax
+      lookups. Every snippet was reviewed, understood, and adjusted before committing.
     </p>
   </section>
 

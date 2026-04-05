@@ -60,16 +60,29 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      The Kleanup for Koastlines (KFC) project developed an autonomous water drone
-      to remove floating plastic debris, supporting UN SDG 14. A six-member team
-      designed a hexagonal HDPT hull housing dual 36 V brushless motors and spiral
-      propellers, powered by parallel Bosch 500 Wh batteries for over 2 hours at up
-      to 2 m/s. Perception blends Ublox NEO-M8N GPS, MPU-9250 IMU, and TF02-Pro LiDAR
-      (40 m range). Custom control software fuses waypoint navigation, PI steering,
-      and Dijkstra-based rerouting to dynamically intercept debris. Prototyping and
-      simulations confirmed buoyancy, stability, and fully autonomous operation in
-      marine conditions.
+      The Kleanup for Koastlines (KFC) Bucket is an autonomous surface drone designed
+      to collect floating plastic debris from coastal and harbour environments, directly
+      addressing UN Sustainable Development Goal 14 (Life Below Water). Developed by a
+      team of six over one semester, the project took the system from concept through
+      detailed design, simulation, and physical prototype.
     </p>
+    <p>
+      The drone combines a custom HDPE hexagonal hull with dual brushless motor
+      propulsion, a multi-sensor perception suite, and a fully autonomous navigation
+      stack — capable of identifying debris, plotting an intercept course, and
+      avoiding dynamic obstacles without any human input.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Technical Specification</h2>
+    <ul class="bullet-list">
+      <li><strong>Hull:</strong> Hexagonal HDPE frame for uniform buoyancy distribution and modular component mounting.</li>
+      <li><strong>Propulsion:</strong> Dual 36 V brushless motors with spiral propellers; parallel Bosch 500 Wh battery packs providing over 2 hours of continuous operation at up to 2 m/s.</li>
+      <li><strong>Perception:</strong> Ublox NEO-M8N GPS for global positioning, MPU-9250 9-DOF IMU for heading and attitude, and TF02-Pro LiDAR (40 m range) for real-time obstacle detection.</li>
+      <li><strong>Navigation:</strong> Waypoint-following with PI heading control. Dijkstra-based path replanning dynamically reroutes around detected obstacles. Sensor fusion on a Raspberry Pi ties all perception inputs into a single navigation state.</li>
+      <li><strong>Collection:</strong> A passive mesh scoop at the bow funnels floating debris into an onboard collection chamber as the drone navigates through target zones.</li>
+    </ul>
   </section>
 
   <section class="container project-section">
@@ -83,10 +96,13 @@
   <section class="container project-section">
     <h2>My Role</h2>
     <p>
-      I originated the drone's core concept, selected its GPS, IMU, and LiDAR
-      sensors for reliable autonomy, and implemented navigation algorithms
-      integrating waypoint planning, PI control, and Dijkstra-based obstacle
-      rerouting.
+      I originated the drone concept and led the systems integration effort. My
+      contributions spanned sensor selection — evaluating GPS, IMU, and LiDAR options
+      against range, weight, and power budget constraints — and implementing the full
+      navigation software stack: waypoint sequencing, PI heading controller, and
+      Dijkstra obstacle-rerouting logic. I also co-authored the power architecture
+      and collaborated closely with teammates on the SolidWorks CAD assembly and
+      wiring schematic.
     </p>
   </section>
 

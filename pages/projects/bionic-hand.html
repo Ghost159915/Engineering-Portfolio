@@ -60,52 +60,71 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      The Bionic Hand project set out to design and build a simple, reliable
-      mechanical prosthesis that enables a bilateral amputee to pick up and carry
-      a 10 kg bag of groceries within five seconds and walk 20 m while holding it.
-      Our team of six engineered a four-fingered gripper mounted on a wooden
-      forearm-sized base, activated by a single button press to ensure ease of use
-      without requiring the user's opposite limb.
+      The Bionic Hand project set out to design and fabricate a functional mechanical
+      prosthesis for a bilateral upper-limb amputee. The performance target was clear
+      and demanding: the device had to pick up and carry a 10 kg bag of groceries
+      within five seconds of activation, then allow the user to walk 20 metres while
+      holding it — all triggered by a single button press on the forearm cuff, requiring
+      no use of the opposite limb.
     </p>
+    <p>
+      Working as a team of six, we iterated through concept generation, structural
+      analysis, and rapid prototyping to arrive at a four-fingered tendon-driven
+      gripper mounted on a forearm-profile base. The design prioritises simplicity
+      and reliability: fewer actuated joints means fewer points of failure in daily use.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Design Approach</h2>
+    <ul class="bullet-list">
+      <li><strong>Four-finger geometry:</strong> A symmetrical four-finger layout was chosen over a thumb-opposing design to maximise grip force on cylindrical and bag-handle loads without requiring complex thumb-abduction kinematics.</li>
+      <li><strong>Tendon actuation:</strong> A single brushed DC motor routes a stainless-steel cable through each finger's conduit to simultaneously close all four fingers. This keeps the palm profile slim and avoids per-finger servo bulk.</li>
+      <li><strong>PLA+ printed structure:</strong> Components were printed in PLA+ for a good balance of stiffness, impact resistance, and rapid iteration — allowing the team to reprint and retest revised geometry within hours.</li>
+      <li><strong>One-button operation:</strong> A latching relay circuit on the forearm cuff drives the actuator in open/close toggle mode, removing any need for fine motor control from the user.</li>
+    </ul>
   </section>
 
   <section class="container project-section">
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="../../assets/2FingerRender.png" alt="Bionic hand CAD render" />
-      <img src="../../assets/BionicHandFinalImage.png" alt="Bionic hand prototype" />
+      <img src="../../assets/2FingerRender.png" alt="Bionic hand CAD render — two-finger sub-assembly" />
+      <img src="../../assets/BionicHandFinalImage.png" alt="Bionic hand final prototype" />
     </div>
   </section>
 
   <section class="container project-section">
     <h2>My Role</h2>
     <p>
-      I conceived the base idea and led the concept design of the bionic hand,
-      creating detailed CAD models in SolidWorks. I then prepared technical
-      drawings for each component and managed the 3D printing process to bring
-      the design to life.
+      I originated the concept and led the mechanical design from first sketch through
+      to final prototype. This included building the full SolidWorks assembly,
+      producing dimensioned technical drawings for each component, and owning the 3D
+      printing workflow — setting print orientations to maximise layer-direction strength
+      at load-bearing joints and managing post-processing. I also conducted the initial
+      load-case analysis that determined the tendon anchor geometry and finger-segment
+      wall thickness.
     </p>
   </section>
 
   <section class="container project-section technical-drawings">
     <h2>Technical Drawings</h2>
     <figure>
-      <img src="../../assets/Finger1.png" alt="Technical drawing of Finger 1" />
-      <figcaption>Finger 1: Proximal segment linking palm and middle phalanx.</figcaption>
+      <img src="../../assets/Finger1.png" alt="Technical drawing of Finger 1 — proximal segment" />
+      <figcaption>Finger 1: Proximal phalanx segment, showing tendon conduit bore and palm-pivot geometry.</figcaption>
     </figure>
     <figure>
-      <img src="../../assets/Finger2.png" alt="Technical drawing of Finger 2" />
-      <figcaption>Finger 2: Distal phalanx (finger tip) design.</figcaption>
+      <img src="../../assets/Finger2.png" alt="Technical drawing of Finger 2 — distal phalanx" />
+      <figcaption>Finger 2: Distal phalanx (fingertip), designed with a concave pad face to conform to rounded bag handles.</figcaption>
     </figure>
     <figure>
-      <img src="../../assets/Palm.png" alt="Technical drawing of Palm" />
-      <figcaption>Palm: Central hub connecting all four fingers.</figcaption>
+      <img src="../../assets/Palm.png" alt="Technical drawing of Palm — central hub" />
+      <figcaption>Palm: Central hub with four pivot bores, tendon routing channels, and wrist-mount interface.</figcaption>
     </figure>
   </section>
 
   <section class="container project-section">
     <a href="../../assets/BionicHandFinalReport.pdf" download class="btn-secondary">
-      Download PDF Report
+      Download Full Report
     </a>
   </section>
   <footer class="site-footer">

@@ -38,7 +38,7 @@
       <div>
         <p class="eyebrow">AI/ML Project</p>
         <h1 class="project-title">Movie Recommender System</h1>
-        <p class="project-subtitle">Personalized recommendations from user behavior.</p>
+        <p class="project-subtitle">Recommender system that learns user preferences from rating history and ranks unseen films by predicted relevance.</p>
       </div>
       <div class="project-meta">
         <div class="meta-card">
@@ -60,9 +60,57 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      A recommender system that learns user preferences and ranks movies by
-      predicted relevance. The goal is to compare memory-based baselines with
-      model-based approaches and tune performance using offline metrics.
+      The Movie Recommender System is a Python project that explores the core
+      techniques behind modern recommendation engines. Given a user's historical
+      film ratings, the system predicts which unrated films that user would enjoy
+      most and returns a ranked shortlist. The project is built for learning and
+      comparison: multiple algorithms are implemented from scratch or with minimal
+      library assistance, then evaluated head-to-head on the MovieLens dataset.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Approaches Compared</h2>
+    <ul class="bullet-list">
+      <li>
+        <strong>User-based collaborative filtering:</strong> Finds users with similar
+        rating histories using cosine similarity, then aggregates their ratings —
+        weighted by similarity score — to predict the target user's preferences.
+        Simple and interpretable, but struggles at scale as the user matrix grows.
+      </li>
+      <li>
+        <strong>Item-based collaborative filtering:</strong> Computes item–item
+        similarity from the transposed rating matrix. More stable than user-based
+        filtering because item relationships change slowly over time; also easier
+        to pre-compute and cache.
+      </li>
+      <li>
+        <strong>Matrix factorisation (SVD):</strong> Decomposes the sparse user–item
+        rating matrix into latent user and item factor vectors. Handles sparsity
+        better than neighbourhood methods and generalises to users with fewer ratings.
+        Implemented using truncated SVD via NumPy and compared against the
+        <code>surprise</code> library's SVD baseline.
+      </li>
+    </ul>
+  </section>
+
+  <section class="container project-section">
+    <h2>Evaluation</h2>
+    <p>
+      All models are evaluated on a held-out test split using RMSE (rating prediction
+      accuracy) and Precision@K / Recall@K (ranking quality for top-N recommendations).
+      A popularity baseline — always recommending the globally highest-rated films —
+      anchors the comparison and highlights the value of personalisation.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Status &amp; Next Steps</h2>
+    <p>
+      Memory-based and SVD models are complete and benchmarked. The next phase
+      introduces a neural collaborative filtering model (embedding layers trained
+      with PyTorch) and explores content-based signals — genre, director, cast — to
+      handle the cold-start problem for new users with no rating history.
     </p>
   </section>
   <footer class="site-footer">

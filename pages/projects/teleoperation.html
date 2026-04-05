@@ -38,7 +38,7 @@
       <div>
         <p class="eyebrow">Featured Project</p>
         <h1 class="project-title">Teleoperation</h1>
-        <p class="project-subtitle">Remote Control System of UR5e</p>
+        <p class="project-subtitle">Real-time kinematic mirroring between a custom miniature arm and a UR5e industrial manipulator over ROS2.</p>
       </div>
       <div class="project-meta">
         <div class="meta-card">
@@ -60,30 +60,62 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      This project establishes a seamless teleoperation link between a custom-fabricated
-      miniature robotic arm and a commercial UR5e industrial manipulator. By mapping the
-      joint kinematics of the hobby-scale model to the Universal Robots environment, the
-      system translates manual tactile inputs into high-precision industrial movement in
-      real time. The integration utilizes a custom software bridge to handle signal
-      processing and latency compensation, ensuring the UR5e accurately mirrors the
-      user's commands. This setup demonstrates a scalable approach to remote manipulation,
-      bridging the gap between cost-effective prototyping and robust industrial execution.
+      This project builds a live teleoperation link between a custom-fabricated
+      miniature robotic arm and a Universal Robots UR5e industrial manipulator.
+      An operator moves the small, lightweight leader arm by hand and the UR5e
+      mirrors every joint angle in real time — translating human-scale intuitive
+      motion into precise industrial manipulation without direct physical contact
+      with the larger robot.
+    </p>
+    <p>
+      The system is designed as a solo engineering project, covering hardware
+      fabrication, embedded firmware, and a full ROS2 software stack. It is still
+      actively being developed, with force-feedback and compliance control as the
+      next milestones.
     </p>
   </section>
 
   <section class="container project-section">
-    <h2>Key focus</h2>
+    <h2>System Architecture</h2>
     <ul class="bullet-list">
-      <li>Bidirectional kinematic mapping between miniature arm and UR5e.</li>
-      <li>Low-latency signal processing with compensation for jitter.</li>
-      <li>Scalable software bridge for industrial manipulation workflows.</li>
+      <li>
+        <strong>Leader arm (custom):</strong> A 6-DOF desktop arm built from 3D-printed
+        links and low-cost servo motors. Potentiometers at each joint provide continuous
+        angle feedback, read by an ESP32 microcontroller at 100 Hz over I2C.
+      </li>
+      <li>
+        <strong>ESP32 firmware (C++):</strong> Reads raw ADC values, applies a calibration
+        map and low-pass filter, then publishes normalised joint angles to a ROS2 topic
+        via micro-ROS over serial USB.
+      </li>
+      <li>
+        <strong>ROS2 bridge (Python):</strong> Subscribes to the joint-angle topic,
+        applies the kinematic scaling transform between the two arms' link-length ratios,
+        and publishes scaled target positions to the UR5e driver node. A jitter-compensation
+        buffer smooths high-frequency noise before commands are dispatched.
+      </li>
+      <li>
+        <strong>UR5e driver:</strong> Uses the official <code>ur_robot_driver</code> ROS2
+        package with a real-time control interface. The bridge feeds scaled joint targets
+        at the robot's control frequency, keeping motion smooth and latency below
+        perceptual threshold.
+      </li>
+    </ul>
+  </section>
+
+  <section class="container project-section">
+    <h2>Key Technical Challenges</h2>
+    <ul class="bullet-list">
+      <li><strong>Kinematic scaling:</strong> The leader and follower arms have different link lengths, so a direct joint-angle copy produces incorrect Cartesian trajectories. A per-joint scale factor derived from forward-kinematics analysis corrects the mapping.</li>
+      <li><strong>Latency and jitter:</strong> USB serial introduces variable latency. A sliding-window median filter and a command-dispatch throttle keep the UR5e motion smooth without introducing perceptible lag from the operator's perspective.</li>
+      <li><strong>Workspace limits:</strong> The UR5e's joint limits differ from the leader arm. Soft limit clamping on the bridge node prevents the follower from ever receiving an out-of-range command, avoiding protective stops.</li>
     </ul>
   </section>
 
   <section class="container project-section">
     <h2>Media</h2>
     <div class="media-placeholder">
-      Media coming soon. Videos and images will be added here.
+      Demo video coming soon — currently finalising the ROS2 bridge tuning.
     </div>
   </section>
 

@@ -38,7 +38,7 @@
       <div>
         <p class="eyebrow">AI/ML Project</p>
         <h1 class="project-title">Weather Prediction System</h1>
-        <p class="project-subtitle">Short-term forecasting from historical signals.</p>
+        <p class="project-subtitle">Machine learning pipeline that ingests historical weather records and forecasts short-term temperature, humidity, and wind conditions.</p>
       </div>
       <div class="project-meta">
         <div class="meta-card">
@@ -60,9 +60,57 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      A machine learning pipeline that ingests historical weather data and
-      predicts short-term conditions. The focus is on feature engineering,
-      model comparison, and error analysis to improve reliability.
+      The Weather Prediction System is a machine learning pipeline built to forecast
+      short-term atmospheric conditions — temperature, humidity, wind speed, and
+      precipitation probability — from historical time-series data. The project
+      treats weather forecasting as a structured regression and classification problem,
+      emphasising rigorous feature engineering and systematic model comparison over
+      black-box tuning.
+    </p>
+    <p>
+      This is an ongoing project. The current phase focuses on establishing a strong
+      baseline with classical models before introducing deep-learning alternatives for
+      comparison.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Pipeline Design</h2>
+    <ul class="bullet-list">
+      <li>
+        <strong>Data ingestion:</strong> Historical hourly records are loaded with Pandas
+        and cleaned — handling missing sensor readings via forward-fill and flagging
+        implausible outliers for review. Multiple station datasets are aligned on a
+        common UTC timestamp index.
+      </li>
+      <li>
+        <strong>Feature engineering:</strong> Raw signals are enriched with lag features
+        (1 h, 3 h, 6 h, 24 h lookbacks), rolling statistics (mean, standard deviation
+        over configurable windows), and cyclical encodings of hour-of-day and
+        day-of-year using sine/cosine transforms to preserve periodicity.
+      </li>
+      <li>
+        <strong>Model comparison:</strong> A baseline persistence model (predict tomorrow
+        = today) anchors the evaluation. It is compared against Ridge regression, Random
+        Forest, Gradient Boosted Trees (XGBoost), and an LSTM sequence model — all
+        evaluated on the same held-out test split.
+      </li>
+      <li>
+        <strong>Error analysis:</strong> RMSE and MAE are tracked per target variable and
+        per forecast horizon (1 h, 6 h, 24 h ahead). Residual plots highlight systematic
+        biases at particular times of day or seasonal periods, informing the next round
+        of feature additions.
+      </li>
+    </ul>
+  </section>
+
+  <section class="container project-section">
+    <h2>Status &amp; Next Steps</h2>
+    <p>
+      Classical model baselines are complete. The next phase introduces an LSTM encoder
+      to capture longer temporal dependencies, followed by a comparison of attention-based
+      architectures (Transformer, Informer) for multi-step forecasting. A lightweight
+      Gradio dashboard is planned for interactive prediction and residual visualisation.
     </p>
   </section>
   <footer class="site-footer">

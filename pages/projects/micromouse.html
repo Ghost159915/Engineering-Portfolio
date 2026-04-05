@@ -38,7 +38,7 @@
       <div>
         <p class="eyebrow">Robotics Project</p>
         <h1 class="project-title">Micromouse</h1>
-        <p class="project-subtitle">Autonomous maze solver with fast path planning.</p>
+        <p class="project-subtitle">Autonomous maze-solving robot combining flood-fill exploration, shortest-path optimisation, and PID motion control.</p>
       </div>
       <div class="project-meta">
         <div class="meta-card">
@@ -60,9 +60,59 @@
   <section class="container project-section">
     <h2>Overview</h2>
     <p>
-      A micromouse platform designed to explore maze mapping, shortest-path
-      planning, and robust control at speed. The focus is on efficient sensing,
-      precise motion control, and fast re-run performance.
+      Micromouse is a classic competitive robotics challenge: a small autonomous
+      robot must navigate an unseen 16 × 16 cell maze, find the centre, and then
+      return on the fastest possible path. This project builds a complete micromouse
+      from hardware up — covering PCB design, embedded firmware, maze-mapping
+      algorithms, and speed-run motion control.
+    </p>
+    <p>
+      The project is currently in active development, with sensor integration and
+      flood-fill mapping complete and PID speed-run tuning underway.
+    </p>
+  </section>
+
+  <section class="container project-section">
+    <h2>Hardware</h2>
+    <ul class="bullet-list">
+      <li><strong>Microcontroller:</strong> STM32 ARM Cortex-M4 running FreeRTOS for deterministic task scheduling across sensing, control, and communication threads.</li>
+      <li><strong>Drive system:</strong> Dual DC micro gear-motors with quadrature encoders providing closed-loop wheel-speed feedback at 1 kHz.</li>
+      <li><strong>Sensing:</strong> Four IR emitter–detector pairs (front, front-left, front-right, diagonal) for wall detection and lateral centering within cells.</li>
+      <li><strong>Power:</strong> Single-cell LiPo with a 3.3 V / 5 V regulated supply; total platform mass kept below 100 g for low inertia in high-speed turns.</li>
+    </ul>
+  </section>
+
+  <section class="container project-section">
+    <h2>Software &amp; Algorithms</h2>
+    <ul class="bullet-list">
+      <li>
+        <strong>Flood-fill exploration:</strong> During the first run, the robot builds
+        a wall map cell-by-cell using its IR sensors. A flood-fill algorithm continuously
+        updates a distance-to-goal score for every known cell, guiding the robot toward
+        the centre while systematically uncovering unknown passages.
+      </li>
+      <li>
+        <strong>Shortest-path speed run:</strong> Once the centre has been reached, the
+        complete wall map is used to compute the globally optimal route. On the speed-run,
+        the robot follows this path at maximum speed, using diagonal traversal through
+        open straights to cut corner-to-corner distance.
+      </li>
+      <li>
+        <strong>PID motion control:</strong> Independent PID loops govern straight-line
+        speed (encoder feedback) and lateral wall-centering (IR differential). A
+        separate turn-rate controller handles in-place and smooth-curve 90° and 180°
+        turns, calibrated to minimise overshoot at competition speeds.
+      </li>
+    </ul>
+  </section>
+
+  <section class="container project-section">
+    <h2>Status &amp; Next Steps</h2>
+    <p>
+      Flood-fill mapping and slow-speed navigation are verified in simulation and on a
+      physical half-size test maze. Current work focuses on PID gain tuning for
+      high-speed straight runs and implementing smooth diagonal motion primitives for
+      the speed-run phase.
     </p>
   </section>
   <footer class="site-footer">
